@@ -173,10 +173,10 @@ public class Courier {
                         writer.println("    \"timeout\"       \"5.0\"");
                         writer.println("    \"buffer\"        \"0.1\"");
                         writer.println("    \"throttle\"      \"0.1\"");
-                        writer.println("    \"heartbeat\"    \"30.0\"");
+                        writer.println("    \"heartbeat\"     \"2.0\"");
                         writer.println("    \"data\"");
                         writer.println("    {");
-                        writer.println("        \"provider\"      \"1\"");
+                        writer.println("        \"provider\"      \"0\"");
                         writer.println("        \"map\"           \"1\"");
                         writer.println("        \"hero\"          \"1\"");
                         writer.println("        \"abilities\"     \"1\"");
