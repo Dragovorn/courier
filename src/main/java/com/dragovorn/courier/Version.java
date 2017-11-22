@@ -7,21 +7,21 @@ import java.util.Properties;
 
 public class Version {
 
-    private String version;
+    private static String version;
 
     Version() {
         Properties properties = new Properties();
 
         try {
-            properties.load(FileUtil.getResource("project.properties"));
+            properties.load(FileUtil.getResource("version.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        this.version = properties.getProperty("version");
+        version = properties.getProperty("version");
     }
 
-    public String getVersion() {
-        return this.version;
+    public static String getVersion() {
+        return version;
     }
 }
