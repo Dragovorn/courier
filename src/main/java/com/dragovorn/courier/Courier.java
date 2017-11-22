@@ -25,7 +25,12 @@ public class Courier {
     public static File configFile;
     public static File logDir;
 
+    private static Courier instance;
+
+    private static final int DOTA = 570;
+
     public Courier() {
+        instance = this;
         baseDir = new File(System.getProperty("user.home"), ".courier"); // Best place to store log files
         configFile = new File(baseDir, "config.json");
         logDir = new File(Courier.baseDir, "logs");
@@ -59,7 +64,7 @@ public class Courier {
             e.printStackTrace();
         }
 
-        this.logger.info("Courier v" + Version.getVersion() + " started!");
+        this.logger.info("Courier v" + Version.getVersion() + " starting...");
 
         if (!configFile.exists()) { // Do initial setup/loading
             JsonObject config = new JsonObject();
@@ -84,6 +89,8 @@ public class Courier {
 
                         gson.toJson(config, writer); // Save the config file
                         writer.close();
+
+                        this.logger.info("Courier v" + Version.getVersion() + " started!");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -111,10 +118,24 @@ public class Courier {
             if (generateGSI(new File(config.get("directory").getAsString())) == GSIState.BROKEN) {
                 this.logger.info("Config file pointing to incorrect directory! Shutting down!");
                 shutdown(null);
+            } else {
+                this.logger.info("Courier v" + Version.getVersion() + " started!");
             }
         }
 
         this.integration = new GameStateIntegration(322);
+    }
+
+    public static Courier getInstance() {
+        return instance;
+    }
+
+    public GameStateIntegration getIntegration() {
+        return this.integration;
+    }
+
+    public Logger getLogger() {
+        return this.logger;
     }
 
     private GSIState generateGSI(File file) {
@@ -145,7 +166,7 @@ public class Courier {
                 } else {
                     this.logger.info("Generating GSI file...");
                     try {
-                        PrintWriter writer = new PrintWriter(file);
+                        PrintWriter writer = new PrintWriter(file); // I could make this part copy a file from our resources... Might do this later down the line
                         writer.println("\"Dota 2 Integration Configuration\"");
                         writer.println("{");
                         writer.println("    \"uri\"           \"http://localhost:322/\"");
