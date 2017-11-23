@@ -31,8 +31,11 @@ public class Courier {
 
     private static Courier instance;
 
+    private boolean running;
+
     public Courier() {
         instance = this;
+        this.running = true;
         baseDir = new File(System.getProperty("user.home"), ".courier"); // Best place to store log files
         configFile = new File(baseDir, "config.json");
         logDir = new File(Courier.baseDir, "logs");
@@ -129,6 +132,16 @@ public class Courier {
         }
 
         this.integration = new GameStateIntegration(322);
+
+        while (this.running) {
+            try {
+                Thread.sleep(15000);
+            } catch (InterruptedException e) {
+                this.running = false;
+                shutdown(null);
+            }
+            this.rpc.runCallbacks();
+        }
     }
 
     public static Courier getInstance() {
@@ -143,7 +156,7 @@ public class Courier {
         return this.logger;
     }
 
-    public DiscordRpc getRpc() {
+    public synchronized DiscordRpc getRpc() {
         return this.rpc;
     }
 
@@ -210,7 +223,9 @@ public class Courier {
      * Event is just there to allow lambda-ing, I don't actually use it (does anyone?)
      */
     private void shutdown(ActionEvent event) {
+        this.running = false;
         this.logger.info("Courier v" + Version.getVersion() + " shutting down!");
+        this.integration.stop();
 
         for (Handler handler : this.logger.getHandlers()) { // Close our logger handler
             handler.close();

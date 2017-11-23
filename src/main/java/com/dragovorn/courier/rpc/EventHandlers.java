@@ -1,5 +1,6 @@
 package com.dragovorn.courier.rpc;
 
+import com.dragovorn.courier.Courier;
 import com.github.psnrigner.DiscordEventHandler;
 import com.github.psnrigner.DiscordJoinRequest;
 import com.github.psnrigner.ErrorCode;
@@ -8,17 +9,17 @@ public class EventHandlers implements DiscordEventHandler {
 
     @Override
     public void ready() {
-//        Courier.getInstance().getLogger().info("RPC Ready!");
+        Courier.getInstance().getLogger().info("RPC Ready!");
     }
 
     @Override
     public void disconnected(ErrorCode errorCode, String s) {
-//        Courier.getInstance().getLogger().info("DISCONNECT " + s);
+        Courier.getInstance().getLogger().info("DISCONNECT :" + errorCode + " " + s);
     }
 
     @Override
     public void errored(ErrorCode errorCode, String s) {
-        // STUB
+        Courier.getInstance().getLogger().info("ERROR :" + errorCode + " " + s);
     }
 
     @Override

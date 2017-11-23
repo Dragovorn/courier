@@ -16,14 +16,18 @@ import java.net.InetSocketAddress;
 
 public class GameStateIntegration implements HttpHandler {
 
-    private long previous = System.currentTimeMillis();
+    private HttpServer server;
+
+    private long previous;
 
     public GameStateIntegration(int port) {
+        this.previous = 0;
+
         try {
-            HttpServer server = HttpServer.create(new InetSocketAddress(port), 0); // Make our http server
-            server.createContext("/", this);
-            server.setExecutor(null);
-            server.start();
+            this.server = HttpServer.create(new InetSocketAddress(port), 0); // Make our http server
+            this.server.createContext("/", this);
+            this.server.setExecutor(null);
+            this.server.start();
 
             Courier.getInstance().getLogger().info("Initiated GSI http server!");
         } catch (IOException e) {
@@ -31,19 +35,23 @@ public class GameStateIntegration implements HttpHandler {
         }
     }
 
+    public void stop() {
+        this.server.stop(0);
+    }
+
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         exchange.sendResponseHeaders(200, 0);
 
-        if ((System.currentTimeMillis() - this.previous) / 1000L <= 10) {
-            Courier.getInstance().getLogger().info("skipping");
-            return;
-        }
-
-        this.previous = System.currentTimeMillis();
 //        Courier.getInstance().getLogger().info("Received request | " + exchange.getRequestMethod());
 
         if (exchange.getRequestMethod().equalsIgnoreCase("post")) { // Make sure we are getting post requests
+            if (!(System.currentTimeMillis() >= this.previous + 15000)) {
+                return;
+            }
+
+            this.previous = System.currentTimeMillis();
+
 
 //            discordRichPresence.setDetails("Java | Discord RPC API");
 //            discordRichPresence.setState("Developing");
@@ -83,8 +91,6 @@ public class GameStateIntegration implements HttpHandler {
             presence.setInstance(false);
 
             if (object.has("map")) {
-                Courier.getInstance().getLogger().info("request");
-
                 String game = object.get("map").getAsJsonObject().get("customgamename").getAsString();
                 String hero = object.get("hero").getAsJsonObject().get("name").getAsString();
 
@@ -101,9 +107,11 @@ public class GameStateIntegration implements HttpHandler {
                 }
 
                 presence.setState(game + ": " + hero + " (Level: " + object.get("hero").getAsJsonObject().get("level").getAsInt() + ")");
+                Courier.getInstance().getLogger().info(game + ": " + hero + " (Level: " + object.get("hero").getAsJsonObject().get("level").getAsInt() + ")");
 //                presence.setStartTimestamp(this.start.getTime());
 //                presence.setEndTimestamp(new Date().getTime());
             } else {
+                Courier.getInstance().getLogger().info("Sending new menu presence...");
                 presence.setState("Main Menu");
             }
 
@@ -119,8 +127,9 @@ public class GameStateIntegration implements HttpHandler {
 //                presence.setJoinSecret("join");
 //                presence.setSpectateSecret("look");
 
-            Courier.getInstance().getRpc().runCallbacks();
+//            Courier.getInstance().getRpc().runCallbacks();
             Courier.getInstance().getRpc().updatePresence(presence);
+            Courier.getInstance().getRpc().runCallbacks();
 //            }
 
         }
