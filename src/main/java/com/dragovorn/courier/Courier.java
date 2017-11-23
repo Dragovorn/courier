@@ -3,7 +3,9 @@ package com.dragovorn.courier;
 import com.dragovorn.courier.gsi.GameStateIntegration;
 import com.dragovorn.courier.log.CourierLogger;
 import com.dragovorn.courier.log.LoggingOutputStream;
+import com.dragovorn.courier.rpc.EventHandlers;
 import com.dragovorn.courier.util.FileUtil;
+import com.github.psnrigner.DiscordRpc;
 import com.google.gson.*;
 
 import javax.imageio.ImageIO;
@@ -25,9 +27,9 @@ public class Courier {
     public static File configFile;
     public static File logDir;
 
-    private static Courier instance;
+    private DiscordRpc rpc;
 
-    private static final int DOTA = 570;
+    private static Courier instance;
 
     public Courier() {
         instance = this;
@@ -37,6 +39,9 @@ public class Courier {
         baseDir.mkdirs();
         logDir.mkdirs();
         this.logger = new CourierLogger();
+        this.rpc = new DiscordRpc();
+        this.rpc.init("383021631951339532", new EventHandlers(), true); // Don't abuse the fact that I'm making this app id public kthnx
+        this.rpc.runCallbacks();
 
         System.setErr(new PrintStream(new LoggingOutputStream(this.logger, Level.SEVERE), true)); // Make sure everything is set to our logger
         System.setOut(new PrintStream(new LoggingOutputStream(this.logger, Level.INFO), true));
@@ -138,6 +143,10 @@ public class Courier {
         return this.logger;
     }
 
+    public DiscordRpc getRpc() {
+        return this.rpc;
+    }
+
     private GSIState generateGSI(File file) {
         GSIState state = GSIState.BROKEN;
 
@@ -176,7 +185,7 @@ public class Courier {
                         writer.println("    \"heartbeat\"     \"2.0\"");
                         writer.println("    \"data\"");
                         writer.println("    {");
-                        writer.println("        \"provider\"      \"0\"");
+                        writer.println("        \"provider\"      \"1\"");
                         writer.println("        \"map\"           \"1\"");
                         writer.println("        \"hero\"          \"1\"");
                         writer.println("        \"abilities\"     \"1\"");
@@ -206,6 +215,8 @@ public class Courier {
         for (Handler handler : this.logger.getHandlers()) { // Close our logger handler
             handler.close();
         }
+
+        this.rpc.shutdown();
 
         System.exit(0);
     }
