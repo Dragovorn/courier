@@ -13,11 +13,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
-import java.util.Date;
 
 public class GameStateIntegration implements HttpHandler {
 
-    private Date start = new Date();
+    private long previous = System.currentTimeMillis();
 
     public GameStateIntegration(int port) {
         try {
@@ -35,6 +34,13 @@ public class GameStateIntegration implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         exchange.sendResponseHeaders(200, 0);
+
+        if ((System.currentTimeMillis() - this.previous) / 1000L <= 10) {
+            Courier.getInstance().getLogger().info("skipping");
+            return;
+        }
+
+        this.previous = System.currentTimeMillis();
 //        Courier.getInstance().getLogger().info("Received request | " + exchange.getRequestMethod());
 
         if (exchange.getRequestMethod().equalsIgnoreCase("post")) { // Make sure we are getting post requests
@@ -74,9 +80,10 @@ public class GameStateIntegration implements HttpHandler {
 
             DiscordRichPresence presence = new DiscordRichPresence();
             presence.setDetails("Courier v" + Version.getVersion());
+            presence.setInstance(false);
 
             if (object.has("map")) {
-//                Courier.getInstance().getLogger().info(object.get("map").toString());
+                Courier.getInstance().getLogger().info("request");
 
                 String game = object.get("map").getAsJsonObject().get("customgamename").getAsString();
                 String hero = object.get("hero").getAsJsonObject().get("name").getAsString();
@@ -111,8 +118,9 @@ public class GameStateIntegration implements HttpHandler {
 //                presence.setMatchSecret("hello");
 //                presence.setJoinSecret("join");
 //                presence.setSpectateSecret("look");
-                presence.setInstance(false);
-                Courier.getInstance().getRpc().updatePresence(presence);
+
+            Courier.getInstance().getRpc().runCallbacks();
+            Courier.getInstance().getRpc().updatePresence(presence);
 //            }
 
         }

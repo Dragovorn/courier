@@ -182,7 +182,7 @@ public class Courier {
                         writer.println("    \"timeout\"       \"5.0\"");
                         writer.println("    \"buffer\"        \"0.1\"");
                         writer.println("    \"throttle\"      \"0.1\"");
-                        writer.println("    \"heartbeat\"     \"2.0\"");
+                        writer.println("    \"heartbeat\"     \"10.0\"");
                         writer.println("    \"data\"");
                         writer.println("    {");
                         writer.println("        \"provider\"      \"1\"");
