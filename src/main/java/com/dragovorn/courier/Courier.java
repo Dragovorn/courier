@@ -3,9 +3,7 @@ package com.dragovorn.courier;
 import com.dragovorn.courier.gsi.GameStateIntegration;
 import com.dragovorn.courier.log.CourierLogger;
 import com.dragovorn.courier.log.LoggingOutputStream;
-import com.dragovorn.courier.rpc.EventHandlers;
 import com.dragovorn.courier.util.FileUtil;
-import com.github.psnrigner.DiscordRpc;
 import com.google.gson.*;
 
 import javax.imageio.ImageIO;
@@ -27,7 +25,7 @@ public class Courier {
     public static File configFile;
     public static File logDir;
 
-    private DiscordRpc rpc;
+//    private DiscordRpc rpc;
 
     private static Courier instance;
 
@@ -42,9 +40,9 @@ public class Courier {
         baseDir.mkdirs();
         logDir.mkdirs();
         this.logger = new CourierLogger();
-        this.rpc = new DiscordRpc();
-        this.rpc.init("383021631951339532", new EventHandlers(), true); // Don't abuse the fact that I'm making this app id public kthnx
-        this.rpc.runCallbacks();
+//        this.rpc = new DiscordRpc();
+//        this.rpc.init("383021631951339532", new EventHandlers(), true); // Don't abuse the fact that I'm making this app id public kthnx
+//        this.rpc.runCallbacks();
 
         System.setErr(new PrintStream(new LoggingOutputStream(this.logger, Level.SEVERE), true)); // Make sure everything is set to our logger
         System.setOut(new PrintStream(new LoggingOutputStream(this.logger, Level.INFO), true));
@@ -90,7 +88,7 @@ public class Courier {
 
                 GSIState state = generateGSI(file);
 
-                if (state == GSIState.CRAETED || state == GSIState.WORKING) {
+                if (state == GSIState.CREATED || state == GSIState.WORKING) {
                     Gson gson = new GsonBuilder().setPrettyPrinting().create();
                     try {
                         FileWriter writer = new FileWriter(configFile);
@@ -133,15 +131,15 @@ public class Courier {
 
         this.integration = new GameStateIntegration(322);
 
-        while (this.running) {
-            try {
-                Thread.sleep(15000);
-            } catch (InterruptedException e) {
-                this.running = false;
-                shutdown(null);
-            }
-            this.rpc.runCallbacks();
-        }
+//        while (this.running) {
+//            try {
+//                Thread.sleep(15000);
+//            } catch (InterruptedException e) {
+//                this.running = false;
+//                shutdown(null);
+//            }
+//            this.rpc.runCallbacks();
+//        }
     }
 
     public static Courier getInstance() {
@@ -156,9 +154,9 @@ public class Courier {
         return this.logger;
     }
 
-    public synchronized DiscordRpc getRpc() {
-        return this.rpc;
-    }
+//    public synchronized DiscordRpc getRpc() {
+//        return this.rpc;
+//    }
 
     private GSIState generateGSI(File file) {
         GSIState state = GSIState.BROKEN;
@@ -211,7 +209,7 @@ public class Courier {
                     }
 
                     JOptionPane.showMessageDialog(null, "If you have Dota 2 currently running please restart it.", "Information", JOptionPane.INFORMATION_MESSAGE);
-                    state = GSIState.CRAETED;
+                    state = GSIState.CREATED;
                 }
             }
         }
@@ -231,7 +229,7 @@ public class Courier {
             handler.close();
         }
 
-        this.rpc.shutdown();
+//        this.rpc.shutdown();
 
         System.exit(0);
     }
@@ -250,7 +248,7 @@ public class Courier {
 
     private enum GSIState {
         WORKING,
-        CRAETED,
+        CREATED,
         BROKEN
     }
 }

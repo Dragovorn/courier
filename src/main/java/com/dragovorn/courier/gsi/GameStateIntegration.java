@@ -1,8 +1,6 @@
 package com.dragovorn.courier.gsi;
 
 import com.dragovorn.courier.Courier;
-import com.dragovorn.courier.Version;
-import com.github.psnrigner.DiscordRichPresence;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.sun.net.httpserver.HttpExchange;
@@ -86,9 +84,9 @@ public class GameStateIntegration implements HttpHandler {
 
             JsonObject object = new Gson().fromJson(qry, JsonObject.class);
 
-            DiscordRichPresence presence = new DiscordRichPresence();
-            presence.setDetails("Courier v" + Version.getVersion());
-            presence.setInstance(false);
+//            DiscordRichPresence presence = new DiscordRichPresence();
+//            presence.setDetails("Courier v" + Version.getVersion());
+//            presence.setInstance(false);
 
             if (object.has("map")) {
                 String game = object.get("map").getAsJsonObject().get("customgamename").getAsString();
@@ -106,13 +104,13 @@ public class GameStateIntegration implements HttpHandler {
                         break;
                 }
 
-                presence.setState(game + ": " + hero + " (Level: " + object.get("hero").getAsJsonObject().get("level").getAsInt() + ")");
+//                presence.setState(game + ": " + hero + " (Level: " + object.get("hero").getAsJsonObject().get("level").getAsInt() + ")");
                 Courier.getInstance().getLogger().info(game + ": " + hero + " (Level: " + object.get("hero").getAsJsonObject().get("level").getAsInt() + ")");
 //                presence.setStartTimestamp(this.start.getTime());
 //                presence.setEndTimestamp(new Date().getTime());
             } else {
                 Courier.getInstance().getLogger().info("Sending new menu presence...");
-                presence.setState("Main Menu");
+//                presence.setState("Main Menu");
             }
 
 //            if (object.has("map")) {
@@ -128,8 +126,8 @@ public class GameStateIntegration implements HttpHandler {
 //                presence.setSpectateSecret("look");
 
 //            Courier.getInstance().getRpc().runCallbacks();
-            Courier.getInstance().getRpc().updatePresence(presence);
-            Courier.getInstance().getRpc().runCallbacks();
+//            Courier.getInstance().getRpc().updatePresence(presence);
+//            Courier.getInstance().getRpc().runCallbacks();
 //            }
 
         }
