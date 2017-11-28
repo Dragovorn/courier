@@ -40,7 +40,7 @@ public class Courier {
         baseDir.mkdirs();
         logDir.mkdirs();
         this.logger = new CourierLogger();
-        DiscordRPC.DiscordInitialize("383021631951339532", new DiscordEventHandlers(), true);
+        DiscordRPC.DiscordInitialize("383021631951339532", new DiscordEventHandlers(), true); // Please no abuse that the client-id was made public
         DiscordRPC.DiscordRunCallbacks();
         // important command for travis script `mvn install:install-file -Dfile=discord-rpc-0.9-BETA-2.jar -DgroupId=net.arikia.dev -DartifactId=discord-rpc -Dversion=0.9-BETA-2 -Dpackaging=jar`
 
