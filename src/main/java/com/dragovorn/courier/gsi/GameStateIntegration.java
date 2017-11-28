@@ -1,7 +1,7 @@
 package com.dragovorn.courier.gsi;
 
 import com.dragovorn.courier.Courier;
-import com.dragovorn.courier.Version;
+import com.dragovorn.util.lang.Locale;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.sun.net.httpserver.HttpExchange;
@@ -19,7 +19,11 @@ public class GameStateIntegration implements HttpHandler {
 
     private HttpServer server;
 
+    private Locale locale;
+
     public GameStateIntegration(int port) {
+        this.locale = new Locale("/lang/en-US.lang", "en-US");
+
         try {
             this.server = HttpServer.create(new InetSocketAddress(port), 0); // Make our http server
             this.server.createContext("/", this);
@@ -58,30 +62,25 @@ public class GameStateIntegration implements HttpHandler {
             JsonObject object = new Gson().fromJson(qry, JsonObject.class);
 
             DiscordRichPresence presence = new DiscordRichPresence();
-            presence.details = "Courier v" + Version.getVersion();
 
             if (object.has("map")) {
-                String game = object.get("map").getAsJsonObject().get("customgamename").getAsString();
-                String hero = object.get("hero").getAsJsonObject().get("name").getAsString();
+                String unlocalized_hero = object.get("hero").getAsJsonObject().get("name").getAsString();
 
-                switch (object.get("map").getAsJsonObject().get("customgamename").getAsString()) {
-                    case "hero_demo":
-                        game = "Demo Hero";
-                        break;
+                String paused = "";
+
+                if (object.get("map").getAsJsonObject().get("paused").getAsBoolean()) {
+                    paused = " (PAUSED)";
+                } else {
+                    presence.startTimestamp = System.currentTimeMillis() / 1000L - object.get("map").getAsJsonObject().get("clock_time").getAsInt();
                 }
 
-                switch (object.get("hero").getAsJsonObject().get("name").getAsString()) {
-                    case "npc_dota_hero_meepo":
-                        hero = "Meepo";
-                        break;
-                }
-
-                Courier.getInstance().getLogger().info(game + ": " + hero + " (Level: " + object.get("hero").getAsJsonObject().get("level").getAsInt() + ")");
-                presence.startTimestamp = System.currentTimeMillis() / 1000L - object.get("map").getAsJsonObject().get("clock_time").getAsInt();
-                presence.state = game + ": " + hero + " (Level: " + object.get("hero").getAsJsonObject().get("level").getAsInt() + ")";
+                presence.details = (object.get("hero").getAsJsonObject().get("alive").getAsBoolean() ? "ALIVE" : "DEAD") + paused;
+                presence.state = "Level " + object.get("hero").getAsJsonObject().get("level").getAsInt() + " " + this.locale.translate(unlocalized_hero);
+                presence.largeImageKey = unlocalized_hero;
+                presence.largeImageText =  (object.get("hero").getAsJsonObject().get("buyback_cooldown").getAsInt() == 0 ? "BUYBACK OFF CD (" + object.get("hero").getAsJsonObject().get("buyback_cost").getAsInt() + " G)" : "BUYBACK ON CD (" + object.get("hero").getAsJsonObject().get("buyback_cooldown").getAsInt() + " S)");
             } else {
-                Courier.getInstance().getLogger().info("Sending new menu presence...");
-                presence.state = "Main Menu";
+                presence.details = "Main Menu";
+                presence.largeImageKey = "main_menu";
             }
 
             DiscordRPC.DiscordUpdatePresence(presence);

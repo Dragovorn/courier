@@ -29,6 +29,12 @@
             </resource>
         </resources>
     </build>
+    <repositories>
+        <repository>
+            <id>dragovorn-repo</id>
+            <url>http://repo.dragovorn.com/</url>
+        </repository>
+    </repositories>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -40,6 +46,11 @@
             <!--<artifactId>discord-rpc-java</artifactId>-->
             <!--<version>1.0.1</version>-->
         <!--</dependency>-->
+        <dependency>
+            <groupId>com.dragovorn</groupId>
+            <artifactId>util</artifactId>
+            <version>0.0.3</version>
+        </dependency>
         <dependency>
             <groupId>net.arikia.dev</groupId>
             <artifactId>discord-rpc</artifactId>

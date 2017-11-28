@@ -1,6 +1,7 @@
 package com.dragovorn.courier;
 
 import com.dragovorn.courier.util.FileUtil;
+import org.apache.commons.lang.SystemUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -9,7 +10,7 @@ import java.io.IOException;
 
 public class Main {
 
-    public static JFrame invisible;
+    static JFrame invisible;
 
     public static void main(String... args) {
         invisible = new JFrame();
@@ -19,7 +20,8 @@ public class Main {
             e.printStackTrace();
         }
 
-        if (!SystemTray.isSupported() || !Desktop.isDesktopSupported()) { // We do this because if there is no sys-tray icon users can't terminate the program, which would be bad
+        // Our discord-rpc library doesn't support macOS yet
+        if (!SystemTray.isSupported() || !Desktop.isDesktopSupported() || SystemUtils.IS_OS_MAC_OSX) { // We do this because if there is no sys-tray icon users can't terminate the program, which would be bad
             JOptionPane.showMessageDialog(null, "Your platform isn't supported currently!", "Unsupported platform!", JOptionPane.ERROR_MESSAGE);
             return;
         }
