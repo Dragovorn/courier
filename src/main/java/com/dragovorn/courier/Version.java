@@ -9,7 +9,7 @@ public class Version {
 
     private static String version;
 
-    Version() {
+    static {
         Properties properties = new Properties();
 
         try {

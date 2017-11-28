@@ -26,7 +26,6 @@ public class Main {
             return;
         }
 
-        new Version();
         new Courier();
     }
 }
