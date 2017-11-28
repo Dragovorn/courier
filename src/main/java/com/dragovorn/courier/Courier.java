@@ -5,6 +5,8 @@ import com.dragovorn.courier.log.CourierLogger;
 import com.dragovorn.courier.log.LoggingOutputStream;
 import com.dragovorn.courier.util.FileUtil;
 import com.google.gson.*;
+import net.arikia.dev.drpc.DiscordEventHandlers;
+import net.arikia.dev.drpc.DiscordRPC;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -25,24 +27,22 @@ public class Courier {
     public static File configFile;
     public static File logDir;
 
-//    private DiscordRpc rpc;
-
     private static Courier instance;
 
-    private boolean running;
+//    private boolean running;
 
     public Courier() {
         instance = this;
-        this.running = true;
+//        this.running = true;
         baseDir = new File(System.getProperty("user.home"), ".courier"); // Best place to store log files
         configFile = new File(baseDir, "config.json");
         logDir = new File(Courier.baseDir, "logs");
         baseDir.mkdirs();
         logDir.mkdirs();
         this.logger = new CourierLogger();
-//        this.rpc = new DiscordRpc();
-//        this.rpc.init("383021631951339532", new EventHandlers(), true); // Don't abuse the fact that I'm making this app id public kthnx
-//        this.rpc.runCallbacks();
+        DiscordRPC.DiscordInitialize("383021631951339532", new DiscordEventHandlers(), true);
+        DiscordRPC.DiscordRunCallbacks();
+        // important command for travis script `mvn install:install-file -Dfile=discord-rpc-0.9-BETA-2.jar -DgroupId=net.arikia.dev -DartifactId=discord-rpc -Dversion=0.9-BETA-2 -Dpackaging=jar`
 
         System.setErr(new PrintStream(new LoggingOutputStream(this.logger, Level.SEVERE), true)); // Make sure everything is set to our logger
         System.setOut(new PrintStream(new LoggingOutputStream(this.logger, Level.INFO), true));
@@ -138,7 +138,7 @@ public class Courier {
 //                this.running = false;
 //                shutdown(null);
 //            }
-//            this.rpc.runCallbacks();
+//            DiscordRPC.DiscordRunCallbacks();
 //        }
     }
 
@@ -153,10 +153,6 @@ public class Courier {
     public Logger getLogger() {
         return this.logger;
     }
-
-//    public synchronized DiscordRpc getRpc() {
-//        return this.rpc;
-//    }
 
     private GSIState generateGSI(File file) {
         GSIState state = GSIState.BROKEN;
@@ -221,13 +217,15 @@ public class Courier {
      * Event is just there to allow lambda-ing, I don't actually use it (does anyone?)
      */
     private void shutdown(ActionEvent event) {
-        this.running = false;
+//        this.running = false;
         this.logger.info("Courier v" + Version.getVersion() + " shutting down!");
         this.integration.stop();
 
         for (Handler handler : this.logger.getHandlers()) { // Close our logger handler
             handler.close();
         }
+
+        DiscordRPC.DiscordShutdown();
 
 //        this.rpc.shutdown();
 
