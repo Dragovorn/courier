@@ -5,7 +5,7 @@ import com.dragovorn.courier.util.FileUtil;
 import java.io.IOException;
 import java.util.Properties;
 
-public class Version {
+class Version {
 
     private static String version;
 
@@ -21,7 +21,7 @@ public class Version {
         version = properties.getProperty("version");
     }
 
-    public static String getVersion() {
+    static String getVersion() {
         return version;
     }
 }
