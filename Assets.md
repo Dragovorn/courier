@@ -1,9 +1,12 @@
-Hero Assets
+Assets
 ===========
-This list exists because I don't want to use all of my Git LFS space uploading
-115 500KB hero asset files, but I still want to keep track of those I've uploaded
-assets for.
+This list exists to help me keep track of the assets that I've got uploaded to discord,
+I use this instead of uploading the actual assets to the github repo because I don't want
+to use all of my Git LFS space on the sheer amount of these files (I get 1 GB of storage
+for free and each of these files is 500KB, there are over 115 of these things)
 
+-----------
+- [x] Main Menu
 - [x] Anti-Mage
 - [x] Axe
 - [x] Bane
@@ -12,4 +15,156 @@ assets for.
 - [x] Drow Ranger
 - [x] Earthshaker
 - [x] Juggernaut
+- [x] Mirana
+- [x] Morphling
+- [x] Shadow Fiend
+- [x] Phantom Lancer
+- [x] Puck
+- [x] Pudge
+- [x] Razor
+- [x] Sand King
+- [x] Storm Spirit
+- [x] Sven
+- [x] Tiny
+- [x] Vengeful Spirit
+- [x] Windranger
+- [x] Zeus
+- [x] Kunkka
+- [x] Lina
 - [ ] Lion
+- [ ] Shadow Shaman
+- [ ] Slardar
+- [ ] Tidehunter
+- [ ] Witch Doctor
+- [ ] Lich
+- [ ] Riki
+- [ ] Enigma
+- [ ] Tinker
+- [ ] Sniper
+- [ ] Necrophos
+- [ ] Warlock
+- [ ] Beastmaster
+- [ ] Queen of Pain
+- [ ] Venomancer
+- [ ] Faceless Void
+- [ ] Wraith King
+- [ ] Death Prophet
+- [ ] Phantom Assassin
+- [ ] Pugna
+- [ ] Templar Assassin
+- [ ] Viper
+- [ ] Luna
+- [ ] Dragon Knight
+- [ ] Dazzle
+- [ ] Clockwerk
+- [ ] Leshrac
+- [ ] Nature's Prophet
+- [ ] Lifestealer
+- [ ] Dark Seer
+- [ ] Clinkz
+- [ ] Omniknight
+- [ ] Enchantress
+- [ ] Huskar
+- [ ] Night Stalker
+- [ ] Broodmother
+- [ ] Bounty Hunter
+- [ ] Weaver
+- [ ] Jakiro
+- [ ] Batrider
+- [ ] Chen
+- [ ] Spectre
+- [ ] Ancient Apparition
+- [ ] Doom
+- [ ] Ursa
+- [ ] Spirit Breaker
+- [ ] Gyrocopter
+- [ ] Alchemist
+- [ ] Invoker
+- [ ] Silencer
+- [ ] Outworld Devourer
+- [ ] Lycan
+- [ ] Brewmaster
+- [ ] Shadow Demon
+- [ ] Lone Druid
+- [ ] Chaos Knight
+- [x] Meepo
+- [ ] Treant Protector
+- [ ] Ogre Magi
+- [ ] Undying
+- [ ] Rubick
+- [ ] Disrupter
+- [ ] Nyx Assassin
+- [ ] Naga Siren
+- [ ] Keeper of the Light
+- [ ] Io
+- [ ] Visage
+- [ ] Slark
+- [ ] Medusa
+- [ ] Troll Warlord
+- [ ] Centaur Warrunner
+- [ ] Magnus
+- [ ] Timbersaw
+- [ ] Bristleback
+- [ ] Tusk
+- [ ] Skywrath Mage
+- [ ] Abaddon
+- [ ] Elder Titan
+- [ ] Legion Commander
+- [ ] Techies
+- [ ] Ember Spirit
+- [ ] Earth Spirit
+- [ ] Underlord
+- [ ] Terrorblade
+- [ ] Phoenix
+- [ ] Oracle
+- [ ] Winter Wyvern
+- [ ] Arc Warden
+- [ ] Monkey King
+- [ ] Dark Willow
+- [ ] Pangolier
+
+The rank medals might have to hold off until I convince Discord to allow me to
+host > 150 assets on their service
+- [ ] Unranked
+- [ ] Herald
+- [ ] Herald ☆
+- [ ] Herald ☆☆
+- [ ] Herald ☆☆☆
+- [ ] Herald ☆☆☆☆
+- [ ] Herald ☆☆☆☆☆
+- [ ] Guardian
+- [ ] Guardian ☆
+- [ ] Guardian ☆☆
+- [ ] Guardian ☆☆☆
+- [ ] Guardian ☆☆☆☆
+- [ ] Guardian ☆☆☆☆☆
+- [ ] Crusader
+- [ ] Crusader ☆
+- [ ] Crusader ☆☆
+- [ ] Crusader ☆☆☆
+- [ ] Crusader ☆☆☆☆
+- [ ] Crusader ☆☆☆☆☆
+- [ ] Archon
+- [ ] Archon ☆
+- [ ] Archon ☆☆
+- [ ] Archon ☆☆☆
+- [ ] Archon ☆☆☆☆
+- [ ] Archon ☆☆☆☆☆
+- [ ] Legend
+- [ ] Legend ☆
+- [ ] Legend ☆☆
+- [ ] Legend ☆☆☆
+- [ ] Legend ☆☆☆☆
+- [ ] Legend ☆☆☆☆☆
+- [ ] Ancient
+- [ ] Ancient ☆
+- [ ] Ancient ☆☆
+- [ ] Ancient ☆☆☆
+- [ ] Ancient ☆☆☆☆
+- [ ] Ancient ☆☆☆☆☆
+- [ ] Divine
+- [ ] Divine ☆
+- [ ] Divine ☆☆
+- [ ] Divine ☆☆☆
+- [ ] Divine ☆☆☆☆
+- [ ] Divine ☆☆☆☆☆
