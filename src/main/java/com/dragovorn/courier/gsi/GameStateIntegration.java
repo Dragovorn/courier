@@ -78,9 +78,13 @@ public class GameStateIntegration implements HttpHandler {
                 presence.state = "Level " + object.get("hero").getAsJsonObject().get("level").getAsInt() + " " + this.locale.translate(unlocalized_hero);
                 presence.largeImageKey = unlocalized_hero;
                 presence.largeImageText =  (object.get("hero").getAsJsonObject().get("buyback_cooldown").getAsInt() == 0 ? "BUYBACK OFF CD (" + object.get("hero").getAsJsonObject().get("buyback_cost").getAsInt() + " G)" : "BUYBACK ON CD (" + object.get("hero").getAsJsonObject().get("buyback_cooldown").getAsInt() + " S)");
+                presence.smallImageKey = "unranked";
+                presence.smallImageText = "Feature Unimplemented";
             } else {
                 presence.details = "Main Menu";
                 presence.largeImageKey = "main_menu";
+                presence.smallImageKey = "unranked";
+                presence.smallImageText = "Feature Unimplemented";
             }
 
             DiscordRPC.DiscordUpdatePresence(presence);

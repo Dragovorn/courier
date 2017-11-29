@@ -31,8 +31,8 @@ for free and each of these files is 500KB, there are over 115 of these things)
 - [x] Zeus
 - [x] Kunkka
 - [x] Lina
-- [ ] Lion
-- [ ] Shadow Shaman
+- [x] Lion
+- [x] Shadow Shaman
 - [ ] Slardar
 - [ ] Tidehunter
 - [ ] Witch Doctor
@@ -124,8 +124,8 @@ for free and each of these files is 500KB, there are over 115 of these things)
 - [ ] Pangolier
 
 The rank medals might have to hold off until I convince Discord to allow me to
-host > 150 assets on their service
-- [ ] Unranked
+host > 150 assets on their service.
+- [x] Unranked
 - [ ] Herald
 - [ ] Herald ☆
 - [ ] Herald ☆☆
