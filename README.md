@@ -1,6 +1,7 @@
 Courier
 =======
 [![Build Status](https://travis-ci.org/Dragovorn/courier.svg?branch=master)](https://travis-ci.org/Dragovorn/courier)
+
 Courier, the Discord Rich Presence integration for Dota 2! **Currently WIP**
 
 Using
