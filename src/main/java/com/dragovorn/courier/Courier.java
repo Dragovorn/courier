@@ -204,7 +204,10 @@ public class Courier {
     private void shutdown(ActionEvent event) {
 //        this.running = false;
         this.logger.info("Courier v" + Version.getVersion() + " shutting down!");
-        this.integration.stop();
+
+        if (this.integration != null) {
+            this.integration.stop();
+        }
 
         for (Handler handler : this.logger.getHandlers()) { // Close our logger handler
             handler.close();
