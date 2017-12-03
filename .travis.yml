@@ -1,5 +1,2 @@
 language: java
 jdk: oraclejdk8
-before_install:
-  - wget https://github.com/Vatuu/discord-rpc/releases/download/0.9-beta.2/discord-rpc-0.9-BETA-2.jar
-  - mvn install:install-file -Dfile=discord-rpc-0.9-BETA-2.jar -DgroupId=net.arikia.dev -DartifactId=discord-rpc -Dversion=0.9-BETA-2 -Dpackaging=jar

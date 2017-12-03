@@ -34,6 +34,10 @@
             <id>dragovorn-repo</id>
             <url>http://repo.dragovorn.com/</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -41,20 +45,15 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
-        <!--<dependency>-->
-            <!--<groupId>com.github.psnrigner</groupId>-->
-            <!--<artifactId>discord-rpc-java</artifactId>-->
-            <!--<version>1.0.1</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>com.dragovorn</groupId>
             <artifactId>util</artifactId>
             <version>0.0.3</version>
         </dependency>
         <dependency>
-            <groupId>net.arikia.dev</groupId>
+            <groupId>com.github.Vatuu</groupId>
             <artifactId>discord-rpc</artifactId>
-            <version>0.9-BETA-2</version>
+            <version>0.9-beta.2</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
