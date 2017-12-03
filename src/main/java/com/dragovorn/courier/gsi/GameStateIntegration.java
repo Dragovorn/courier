@@ -48,8 +48,7 @@ public class GameStateIntegration implements HttpHandler {
             String encoding = "ISO-8859-1";
             String qry;
             InputStream in = exchange.getRequestBody();
-            try { // Decode post data
-                ByteArrayOutputStream out = new ByteArrayOutputStream();
+            try (ByteArrayOutputStream out = new ByteArrayOutputStream()) { // Decode post data
                 byte buf[] = new byte[4096];
                 for (int n = in.read(buf); n > 0; n = in.read(buf)) {
                     out.write(buf, 0, n);
@@ -79,12 +78,12 @@ public class GameStateIntegration implements HttpHandler {
                 presence.largeImageKey = unlocalized_hero;
                 presence.largeImageText =  (object.get("hero").getAsJsonObject().get("buyback_cooldown").getAsInt() == 0 ? "BUYBACK OFF CD (" + object.get("hero").getAsJsonObject().get("buyback_cost").getAsInt() + " G)" : "BUYBACK ON CD (" + object.get("hero").getAsJsonObject().get("buyback_cooldown").getAsInt() + " S)");
                 presence.smallImageKey = "unranked";
-                presence.smallImageText = "Comming Soon...";
+                presence.smallImageText = "Coming Soon...";
             } else {
                 presence.details = "Main Menu";
                 presence.largeImageKey = "main_menu";
                 presence.smallImageKey = "unranked";
-                presence.smallImageText = "Comming Soon...";
+                presence.smallImageText = "Coming Soon...";
             }
 
             DiscordRPC.DiscordUpdatePresence(presence);

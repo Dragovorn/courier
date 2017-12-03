@@ -29,11 +29,8 @@ public class Courier {
 
     private static Courier instance;
 
-//    private boolean running;
-
     public Courier() {
         instance = this;
-//        this.running = true;
         baseDir = new File(System.getProperty("user.home"), ".courier"); // Best place to store log files
         configFile = new File(baseDir, "config.json");
         logDir = new File(Courier.baseDir, "logs");
@@ -128,16 +125,6 @@ public class Courier {
         }
 
         this.integration = new GameStateIntegration(322);
-
-//        while (this.running) {
-//            try {
-//                Thread.sleep(15000);
-//            } catch (InterruptedException e) {
-//                this.running = false;
-//                shutdown(null);
-//            }
-//            DiscordRPC.DiscordRunCallbacks();
-//        }
     }
 
     public static Courier getInstance() {
