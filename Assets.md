@@ -175,159 +175,159 @@ for free and each of these files is 500KB, there are over 115 of these things)
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Death Prophet
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Phantom Assassin
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Pugna
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Templar Assassin
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Viper
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Luna
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Dragon Knight
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Dazzle
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Clockwerk
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Leshrac
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Nature's Prophet
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Lifestealer
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Dark Seer
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Clinkz
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Omniknight
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Enchantress
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Huskar
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Night Stalker
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Broodmother
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Bounty Hunter
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Weaver
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Jakiro
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Batrider
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Chen
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Spectre
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Ancient Apparition
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Doom
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Ursa
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Spirit Breaker
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Gyrocopter
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Alchemist
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Invoker
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Silencer
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Outworld Devourer
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Lycan
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Brewmaster
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Shadow Demon
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Lone Druid
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Chaos Knight
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [x] Meepo
@@ -335,139 +335,139 @@ for free and each of these files is 500KB, there are over 115 of these things)
     - [x] Resized
     - [x] Uploaded
 - [ ] Treant Protector
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Ogre Magi
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Undying
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Rubick
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
-- [ ] Disrupter
-    - [ ] Downloaded
+- [ ] Disruptor
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Nyx Assassin
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Naga Siren
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Keeper of the Light
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded Light
 - [ ] Io
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Visage
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Slark
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Medusa
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Troll Warlord
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Centaur Warrunner
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Magnus
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Timbersaw
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Bristleback
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Tusk
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Skywrath Mage
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Abaddon
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Elder Titan
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Legion Commander
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Techies
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Ember Spirit
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Earth Spirit
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Underlord
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Terrorblade
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Phoenix
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Oracle
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Winter Wyvern
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Arc Warden
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Monkey King
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Dark Willow
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Pangolier
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 
@@ -478,7 +478,7 @@ host > 150 assets on their service.
     - [x] Resized
     - [x] Uploaded
 - [ ] Herald
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Herald ☆
@@ -502,7 +502,7 @@ host > 150 assets on their service.
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Guardian
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Guardian ☆
@@ -526,7 +526,7 @@ host > 150 assets on their service.
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Crusader
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Crusader ☆
@@ -550,7 +550,7 @@ host > 150 assets on their service.
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Archon
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Archon ☆
@@ -574,7 +574,7 @@ host > 150 assets on their service.
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Legend
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Legend ☆
@@ -598,7 +598,7 @@ host > 150 assets on their service.
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Ancient
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Ancient ☆
@@ -622,7 +622,7 @@ host > 150 assets on their service.
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Divine
-    - [ ] Downloaded
+    - [x] Downloaded
     - [ ] Resized
     - [ ] Uploaded
 - [ ] Divine ☆
