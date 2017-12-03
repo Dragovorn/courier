@@ -122,351 +122,351 @@ for free and each of these files is 500KB, there are over 115 of these things)
     - [x] Downloaded
     - [x] Resized
     - [x] Uploaded
-- [ ] Witch Doctor
+- [x] Witch Doctor
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Lich
+    - [x] Uploaded
+- [x] Lich
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Riki
+    - [x] Uploaded
+- [x] Riki
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Enigma
+    - [x] Uploaded
+- [x] Enigma
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Tinker
+    - [x] Uploaded
+- [x] Tinker
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Sniper
+    - [x] Uploaded
+- [x] Sniper
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Necrophos
+    - [x] Uploaded
+- [x] Necrophos
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Warlock
+    - [x] Uploaded
+- [x] Warlock
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Beastmaster
+    - [x] Uploaded
+- [x] Beastmaster
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Queen of Pain
+    - [x] Uploaded
+- [x] Queen of Pain
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Venomancer
+    - [x] Uploaded
+- [x] Venomancer
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Faceless Void
+    - [x] Uploaded
+- [x] Faceless Void
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Wraith King
+    - [x] Uploaded
+- [x] Wraith King
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Death Prophet
+    - [x] Uploaded
+- [x] Death Prophet
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Phantom Assassin
+    - [x] Uploaded
+- [x] Phantom Assassin
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Pugna
+    - [x] Uploaded
+- [x] Pugna
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Templar Assassin
+    - [x] Uploaded
+- [x] Templar Assassin
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Viper
+    - [x] Uploaded
+- [x] Viper
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Luna
+    - [x] Uploaded
+- [x] Luna
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Dragon Knight
+    - [x] Uploaded
+- [x] Dragon Knight
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Dazzle
+    - [x] Uploaded
+- [x] Dazzle
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Clockwerk
+    - [x] Uploaded
+- [x] Clockwerk
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Leshrac
+    - [x] Uploaded
+- [x] Leshrac
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Nature's Prophet
+    - [x] Uploaded
+- [x] Nature's Prophet
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Lifestealer
+    - [x] Uploaded
+- [x] Lifestealer
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Dark Seer
+    - [x] Uploaded
+- [x] Dark Seer
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Clinkz
+    - [x] Uploaded
+- [x] Clinkz
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Omniknight
+    - [x] Uploaded
+- [x] Omniknight
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Enchantress
+    - [x] Uploaded
+- [x] Enchantress
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Huskar
+    - [x] Uploaded
+- [x] Huskar
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Night Stalker
+    - [x] Uploaded
+- [x] Night Stalker
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Broodmother
+    - [x] Uploaded
+- [x] Broodmother
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Bounty Hunter
+    - [x] Uploaded
+- [x] Bounty Hunter
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Weaver
+    - [x] Uploaded
+- [x] Weaver
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Jakiro
+    - [x] Uploaded
+- [x] Jakiro
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Batrider
+    - [x] Uploaded
+- [x] Batrider
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Chen
+    - [x] Uploaded
+- [x] Chen
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Spectre
+    - [x] Uploaded
+- [x] Spectre
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Ancient Apparition
+    - [x] Uploaded
+- [x] Ancient Apparition
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Doom
+    - [x] Uploaded
+- [x] Doom
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Ursa
+    - [x] Uploaded
+- [x] Ursa
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Spirit Breaker
+    - [x] Uploaded
+- [x] Spirit Breaker
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Gyrocopter
+    - [x] Uploaded
+- [x] Gyrocopter
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Alchemist
+    - [x] Uploaded
+- [x] Alchemist
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Invoker
+    - [x] Uploaded
+- [x] Invoker
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Silencer
+    - [x] Uploaded
+- [x] Silencer
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Outworld Devourer
+    - [x] Uploaded
+- [x] Outworld Devourer
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Lycan
+    - [x] Uploaded
+- [x] Lycan
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Brewmaster
+    - [x] Uploaded
+- [x] Brewmaster
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Shadow Demon
+    - [x] Uploaded
+- [x] Shadow Demon
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Lone Druid
+    - [x] Uploaded
+- [x] Lone Druid
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Chaos Knight
+    - [x] Uploaded
+- [x] Chaos Knight
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
+    - [x] Uploaded
 - [x] Meepo
     - [x] Downloaded
     - [x] Resized
     - [x] Uploaded
-- [ ] Treant Protector
+- [x] Treant Protector
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Ogre Magi
+    - [x] Uploaded
+- [x] Ogre Magi
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Undying
+    - [x] Uploaded
+- [x] Undying
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Rubick
+    - [x] Uploaded
+- [x] Rubick
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Disruptor
+    - [x] Uploaded
+- [x] Disruptor
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Nyx Assassin
+    - [x] Uploaded
+- [x] Nyx Assassin
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Naga Siren
+    - [x] Uploaded
+- [x] Naga Siren
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Keeper of the Light
+    - [x] Uploaded
+- [x] Keeper of the Light
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded Light
-- [ ] Io
+    - [x] Uploaded Light
+- [x] Io
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Visage
+    - [x] Uploaded
+- [x] Visage
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Slark
+    - [x] Uploaded
+- [x] Slark
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Medusa
+    - [x] Uploaded
+- [x] Medusa
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Troll Warlord
+    - [x] Uploaded
+- [x] Troll Warlord
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Centaur Warrunner
+    - [x] Uploaded
+- [x] Centaur Warrunner
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Magnus
+    - [x] Uploaded
+- [x] Magnus
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Timbersaw
+    - [x] Uploaded
+- [x] Timbersaw
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Bristleback
+    - [x] Uploaded
+- [x] Bristleback
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Tusk
+    - [x] Uploaded
+- [x] Tusk
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Skywrath Mage
+    - [x] Uploaded
+- [x] Skywrath Mage
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Abaddon
+    - [x] Uploaded
+- [x] Abaddon
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Elder Titan
+    - [x] Uploaded
+- [x] Elder Titan
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Legion Commander
+    - [x] Uploaded
+- [x] Legion Commander
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Techies
+    - [x] Uploaded
+- [x] Techies
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Ember Spirit
+    - [x] Uploaded
+- [x] Ember Spirit
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Earth Spirit
+    - [x] Uploaded
+- [x] Earth Spirit
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Underlord
+    - [x] Uploaded
+- [x] Underlord
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Terrorblade
+    - [x] Uploaded
+- [x] Terrorblade
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Phoenix
+    - [x] Uploaded
+- [x] Phoenix
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Oracle
+    - [x] Uploaded
+- [x] Oracle
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Winter Wyvern
+    - [x] Uploaded
+- [x] Winter Wyvern
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Arc Warden
+    - [x] Uploaded
+- [x] Arc Warden
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Monkey King
+    - [x] Uploaded
+- [x] Monkey King
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Dark Willow
+    - [x] Uploaded
+- [x] Dark Willow
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
-- [ ] Pangolier
+    - [x] Uploaded
+- [x] Pangolier
     - [x] Downloaded
     - [x] Resized
     - [ ] Uploaded
@@ -477,10 +477,10 @@ host > 150 assets on their service.
     - [x] Downloaded
     - [x] Resized
     - [x] Uploaded
-- [ ] Herald
+- [x] Herald
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
+    - [x] Uploaded
 - [ ] Herald ☆
     - [ ] Downloaded
     - [ ] Resized
@@ -501,10 +501,10 @@ host > 150 assets on their service.
     - [ ] Downloaded
     - [ ] Resized
     - [ ] Uploaded
-- [ ] Guardian
+- [x] Guardian
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
+    - [x] Uploaded
 - [ ] Guardian ☆
     - [ ] Downloaded
     - [ ] Resized
@@ -525,10 +525,10 @@ host > 150 assets on their service.
     - [ ] Downloaded
     - [ ] Resized
     - [ ] Uploaded
-- [ ] Crusader
+- [x] Crusader
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
+    - [x] Uploaded
 - [ ] Crusader ☆
     - [ ] Downloaded
     - [ ] Resized
@@ -549,10 +549,10 @@ host > 150 assets on their service.
     - [ ] Downloaded
     - [ ] Resized
     - [ ] Uploaded
-- [ ] Archon
+- [x] Archon
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
+    - [x] Uploaded
 - [ ] Archon ☆
     - [ ] Downloaded
     - [ ] Resized
@@ -573,10 +573,10 @@ host > 150 assets on their service.
     - [ ] Downloaded
     - [ ] Resized
     - [ ] Uploaded
-- [ ] Legend
+- [x] Legend
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
+    - [x] Uploaded
 - [ ] Legend ☆
     - [ ] Downloaded
     - [ ] Resized
@@ -597,10 +597,10 @@ host > 150 assets on their service.
     - [ ] Downloaded
     - [ ] Resized
     - [ ] Uploaded
-- [ ] Ancient
+- [x] Ancient
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
+    - [x] Uploaded
 - [ ] Ancient ☆
     - [ ] Downloaded
     - [ ] Resized
@@ -621,10 +621,10 @@ host > 150 assets on their service.
     - [ ] Downloaded
     - [ ] Resized
     - [ ] Uploaded
-- [ ] Divine
+- [x] Divine
     - [x] Downloaded
     - [x] Resized
-    - [ ] Uploaded
+    - [x] Uploaded
 - [ ] Divine ☆
     - [ ] Downloaded
     - [ ] Resized
