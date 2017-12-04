@@ -22,7 +22,7 @@ public class GameStateIntegration implements HttpHandler {
     private Locale locale;
 
     public GameStateIntegration(int port) {
-        this.locale = new Locale("/lang/en-US.lang", "en-US");
+        this.locale = new Locale("/lang/en-US.lang", "en-US"); // Make sure to load our locale
 
         try {
             this.server = HttpServer.create(new InetSocketAddress(port), 0); // Make our http server
@@ -53,7 +53,7 @@ public class GameStateIntegration implements HttpHandler {
                 for (int n = in.read(buf); n > 0; n = in.read(buf)) {
                     out.write(buf, 0, n);
                 }
-                qry = new String(out.toByteArray(), encoding);
+                qry = new String(out.toByteArray(), encoding); // Encode post data to a string
             } finally {
                 in.close();
             }

@@ -13,6 +13,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,15 +54,18 @@ public class Courier {
             MenuItem exit = new MenuItem("Exit"); // So our program can be stopped
             exit.addActionListener(this::shutdown);
 
-            MenuItem logs = new MenuItem("View Logs Folder"); // So those who aren't good w/ technology can easily send log files
+            MenuItem logs = new MenuItem("View Logs Folder..."); // So those who aren't good w/ technology can easily send log files
             logs.addActionListener(this::openLogs);
+
+            MenuItem report = new MenuItem("Report a bug..."); // So people can report bugs
+            report.addActionListener(this::openIssueTracker);
 
             menu.add(logs);
             menu.add(exit);
 
             icon.setPopupMenu(menu);
 
-            SystemTray.getSystemTray().add(icon);
+            SystemTray.getSystemTray().add(icon); // Add Icon to system tray
         } catch (IOException | AWTException e) {
             e.printStackTrace();
         }
@@ -73,7 +78,7 @@ public class Courier {
             this.logger.info("New installation detected, going through initial setup!");
             JFileChooser selector = new JFileChooser(new File(".")); // Ask user for where their dota directory is
             selector.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            selector.setDialogTitle("Select Dota 2 Folder");
+            selector.setDialogTitle("Select Dota 2 Folder"); // Set the prompt for the directory picker
 
             if (selector.showOpenDialog(Main.invisible) == JFileChooser.APPROVE_OPTION) {
                 File file = selector.getSelectedFile();
@@ -83,7 +88,7 @@ public class Courier {
 
                 GSIState state = generateGSI(file);
 
-                if (state == GSIState.CREATED || state == GSIState.WORKING) {
+                if (state == GSIState.CREATED || state == GSIState.WORKING) { // Make sure that everything is working
                     Gson gson = new GsonBuilder().setPrettyPrinting().create();
                     try {
                         FileWriter writer = new FileWriter(configFile);
@@ -202,7 +207,6 @@ public class Courier {
      * Event is just there to allow lambda-ing, I don't actually use it (does anyone?)
      */
     private void shutdown(ActionEvent event) {
-//        this.running = false;
         this.logger.info("Courier v" + Version.getVersion() + " shutting down!");
 
         if (this.integration != null) {
@@ -215,8 +219,6 @@ public class Courier {
 
         DiscordRPC.DiscordShutdown();
 
-//        this.rpc.shutdown();
-
         System.exit(0);
     }
 
@@ -228,6 +230,18 @@ public class Courier {
             this.logger.info("User wants to see logs folder, tidy up lads, we're having people over!");
             Desktop.getDesktop().open(logDir);
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /*
+     * Event is just there to allow lambda-ing, I don't actually use it (does anyone?)
+     */
+    private void openIssueTracker(ActionEvent event) {
+        try {
+            this.logger.info("Oh no, seems like the user wants to report a bug, I hope it wasn't major...");
+            Desktop.getDesktop().browse(new URI("https://github.com/Dragovorn/courier/issues"));
+        } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }
     }
