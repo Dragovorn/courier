@@ -14,6 +14,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
+import java.time.Instant;
 
 public class GameStateIntegration implements HttpHandler {
 
@@ -21,10 +22,16 @@ public class GameStateIntegration implements HttpHandler {
 
     private Locale locale;
 
+    private long gameStart;
+
+    private int previousTime;
+
     private boolean running;
 
     public GameStateIntegration(int port) {
         this.locale = new Locale("/lang/en-US.lang", "en-US"); // Make sure to load our locale
+        this.gameStart = -1;
+        this.previousTime = Integer.MAX_VALUE;
 
         try {
             this.server = HttpServer.create(new InetSocketAddress(port), 0); // Make our http server
@@ -60,8 +67,8 @@ public class GameStateIntegration implements HttpHandler {
             try (InputStream in = exchange.getRequestBody(); ByteArrayOutputStream out = new ByteArrayOutputStream()) { // Decode post data
                 byte[] buf = new byte[4096];
 
-                for (int n = in.read(buf); n > 0; n = in.read(buf)) {
-                    out.write(buf, 0, n);
+                for (int x = in.read(buf); x > 0; x = in.read(buf)) {
+                    out.write(buf, 0, x);
                 }
 
                 qry = new String(out.toByteArray(), encoding); // Encode post data to a string
@@ -72,28 +79,63 @@ public class GameStateIntegration implements HttpHandler {
             DiscordRichPresence presence = new DiscordRichPresence();
 
             if (object.has("map")) {
-                String unlocalized_hero = object.get("hero").getAsJsonObject().get("name").getAsString();
+                JsonObject hero = object.get("hero").getAsJsonObject();
+                JsonObject map = object.get("map").getAsJsonObject();
 
-                String paused = "";
+                String unlocalized_hero = hero.get("name").getAsString();
 
-                if (object.get("map").getAsJsonObject().get("paused").getAsBoolean()) {
-                    paused = " (PAUSED)";
-                } else {
-                    presence.startTimestamp = System.currentTimeMillis() / 1000L - object.get("map").getAsJsonObject().get("clock_time").getAsInt();
-                }
-
-                presence.details = (object.get("hero").getAsJsonObject().get("alive").getAsBoolean() ? "ALIVE" : "DEAD") + paused;
-                presence.state = "Level " + object.get("hero").getAsJsonObject().get("level").getAsInt() + " " + this.locale.translate(unlocalized_hero);
-                presence.largeImageKey = unlocalized_hero;
-                presence.largeImageText =  (object.get("hero").getAsJsonObject().get("buyback_cooldown").getAsInt() == 0 ? "BUYBACK OFF CD (" + object.get("hero").getAsJsonObject().get("buyback_cost").getAsInt() + " G)" : "BUYBACK ON CD (" + object.get("hero").getAsJsonObject().get("buyback_cooldown").getAsInt() + " S)");
-
-                DiscordRPC.discordUpdatePresence(presence);
+                String status;
 
                 if (!this.running) {
                     this.running = true;
                 }
+
+                int gameTime = map.get("clock_time").getAsInt();
+
+                if (this.previousTime < gameTime && gameTime < 0) {
+                    this.gameStart = -1;
+                }
+
+                this.previousTime = gameTime;
+
+                if (this.gameStart == -1) {
+                    this.gameStart = Instant.now().getEpochSecond() - gameTime;
+                }
+
+                String bonus = " ";
+
+                if (map.get("paused").getAsBoolean()) {
+                    bonus += "(Paused)";
+                    this.gameStart = -1;
+                } else {
+                    if (map.get("game_state").getAsString().equals("DOTA_GAMERULES_STATE_PRE_GAME")) {
+                        bonus += "(Preparing)";
+                    } else if (!hero.get("alive").getAsBoolean()) {
+                        bonus += hero.get("buyback_cooldown").getAsInt() == 0 ? "(Buyback " + hero.get("buyback_cost") + "g)" : "(No Buyback)";
+                    }
+
+                    if (this.gameStart > Instant.now().getEpochSecond()) {
+                        presence.endTimestamp = this.gameStart;
+                    } else {
+                        presence.startTimestamp = this.gameStart;
+                    }
+                }
+
+                status = (hero.getAsJsonObject().get("alive").getAsBoolean() ? "Alive" : "Dead") + bonus;
+
+                presence.details = "Level " + hero.get("level").getAsInt() + " " + this.locale.translate(unlocalized_hero);
+                presence.state = status;
+                presence.largeImageKey = unlocalized_hero;
+
+                DiscordRPC.discordUpdatePresence(presence);
+
+                if (Courier.getInstance().isDebug()) {
+                    Courier.getInstance().getLogger().info(qry);
+                }
             } else if (this.running) {
                 DiscordRPC.discordClearPresence();
+                this.running = false;
+                this.gameStart = -1;
             }
         }
 

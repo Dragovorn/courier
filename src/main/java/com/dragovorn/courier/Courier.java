@@ -9,8 +9,10 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import dorkbox.systemTray.Checkbox;
 import dorkbox.systemTray.Menu;
 import dorkbox.systemTray.MenuItem;
+import dorkbox.systemTray.Separator;
 import dorkbox.systemTray.SystemTray;
 import net.arikia.dev.drpc.DiscordEventHandlers;
 import net.arikia.dev.drpc.DiscordRPC;
@@ -45,6 +47,8 @@ public class Courier {
     private static Courier instance;
 
     private boolean update;
+    private boolean debug;
+    private boolean publicIds;
 
     public Courier() {
         instance = this;
@@ -99,6 +103,17 @@ public class Courier {
         tmp.setTooltip("Opens the website that shows all the contributors");
 
         menu.add(tmp);
+        menu.add(new Separator());
+
+        Checkbox box = new Checkbox("Debug Mode", this::handleDebugClick);
+        box.setChecked(false);
+
+        menu.add(box);
+
+        box = new Checkbox("Make IDs Public", this::handleIDsClick);
+        box.setChecked(false); // TODO: Make this based off of the config
+
+        menu.add(box);
 
         tmp = new MenuItem("Exit", this::exit);
         tmp.setTooltip("Exit Courier");
@@ -185,6 +200,14 @@ public class Courier {
 
     public synchronized boolean canUpdate() { // Make sure to avoid data racing with this xd
         return this.update;
+    }
+
+    public synchronized void setDebug(boolean debug) {
+        this.debug = debug;
+    }
+
+    public synchronized boolean isDebug() { // Make sure to avoid data racing with this xd
+        return this.debug;
     }
 
     private GSIState generateGSI(File file) {
@@ -286,11 +309,34 @@ public class Courier {
         }
     }
 
+    /*
+     * Event is just there to allow lambda-ing, I don't actually use it (does anyone?)
+     */
     private void openContributors(ActionEvent event) {
         try {
             Desktop.getDesktop().browse(new URI("https://github.com/Dragovorn/courier/graphs/contributors"));
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void handleDebugClick(ActionEvent event) {
+        setDebug(((Checkbox) event.getSource()).getChecked());
+
+        if (isDebug()) {
+            this.logger.info("Enabling Debug Mode...");
+        } else {
+            this.logger.info("Disabling Debug Mode...");
+        }
+    }
+
+    private void handleIDsClick(ActionEvent event) {
+        this.publicIds = ((Checkbox) event.getSource()).getChecked();
+
+        if (this.publicIds) {
+            this.logger.info("Enabling Public Ids...");
+        } else {
+            this.logger.info("Disabling Public Ids...");
         }
     }
 
