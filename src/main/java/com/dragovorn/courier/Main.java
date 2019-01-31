@@ -1,11 +1,11 @@
 package com.dragovorn.courier;
 
 import com.dragovorn.courier.util.FileUtil;
-import org.apache.commons.lang.SystemUtils;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JWindow;
 import java.io.IOException;
 
 public class Main {
@@ -20,12 +20,14 @@ public class Main {
             e.printStackTrace();
         }
 
-        // Our discord-rpc library doesn't support macOS yet
-        if (!SystemTray.isSupported() || !Desktop.isDesktopSupported() || SystemUtils.IS_OS_MAC_OSX) { // We do this because if there is no sys-tray icon users can't terminate the program, which would be bad
-            JOptionPane.showMessageDialog(null, "Your platform isn't supported currently!", "Unsupported platform!", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+        JWindow window = new JWindow();
+        window.setBounds(500, 150, 300, 200);
+        window.getContentPane().add(new JTextField("Starting Courier..."));
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
 
         new Courier();
+
+        window.dispose();
     }
 }

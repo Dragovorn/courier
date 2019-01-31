@@ -4,15 +4,28 @@ import com.dragovorn.courier.gsi.GameStateIntegration;
 import com.dragovorn.courier.log.CourierLogger;
 import com.dragovorn.courier.log.LoggingOutputStream;
 import com.dragovorn.courier.util.FileUtil;
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import dorkbox.systemTray.Menu;
+import dorkbox.systemTray.MenuItem;
+import dorkbox.systemTray.SystemTray;
 import net.arikia.dev.drpc.DiscordEventHandlers;
 import net.arikia.dev.drpc.DiscordRPC;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.logging.Handler;
@@ -31,6 +44,8 @@ public class Courier {
 
     private static Courier instance;
 
+    private boolean update;
+
     public Courier() {
         instance = this;
         baseDir = new File(System.getProperty("user.home"), ".courier"); // Best place to store log files
@@ -39,36 +54,56 @@ public class Courier {
         baseDir.mkdirs();
         logDir.mkdirs();
         this.logger = new CourierLogger();
-        DiscordRPC.DiscordInitialize("383021631951339532", new DiscordEventHandlers(), true); // Please no abuse that the client-id was made public
 
         System.setErr(new PrintStream(new LoggingOutputStream(this.logger, Level.SEVERE), true)); // Make sure everything is set to our logger
         System.setOut(new PrintStream(new LoggingOutputStream(this.logger, Level.INFO), true));
 
+        DiscordRPC.discordInitialize("383021631951339532", new DiscordEventHandlers.Builder()
+                .setReadyEventHandler((user) -> {
+                    setUpdate(true);
+                    this.logger.info("Connected to Discord user " + user.username + "#" + user.discriminator + "!");
+                })
+                .build(), true);
+
+        Runtime.getRuntime().addShutdownHook(new Thread(this::shutdown)); // Register our shutdown hook to make sure all the shutdown code is being executed
+
+        SystemTray tray = SystemTray.get();
+
+        if (tray == null) {
+            throw new RuntimeException("Unable to load System Tray!");
+        }
+
+        tray.setTooltip("Courier");
+
         try {
-            TrayIcon icon = new TrayIcon(ImageIO.read(FileUtil.getResource("icon.png")), "Courier"); // Make us a tray icon, so people can kill our program
-
-            PopupMenu menu = new PopupMenu();
-            menu.add("Courier v" + Version.getVersion());
-            menu.addSeparator();
-
-            MenuItem exit = new MenuItem("Exit"); // So our program can be stopped
-            exit.addActionListener(this::shutdown);
-
-            MenuItem logs = new MenuItem("View Logs Folder..."); // So those who aren't good w/ technology can easily send log files
-            logs.addActionListener(this::openLogs);
-
-            MenuItem report = new MenuItem("Report a bug..."); // So people can report bugs
-            report.addActionListener(this::openIssueTracker);
-
-            menu.add(logs);
-            menu.add(exit);
-
-            icon.setPopupMenu(menu);
-
-            SystemTray.getSystemTray().add(icon); // Add Icon to system tray
-        } catch (IOException | AWTException e) {
+            tray.setImage(ImageIO.read(FileUtil.getResource("icon.png")));
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
+        tray.setStatus("v" + Version.getVersion());
+
+        Menu menu = tray.getMenu();
+
+        MenuItem tmp = new MenuItem("Open Logs", this::openLogs);
+        tmp.setTooltip("Open your logs folder to provide logs in an issue report");
+
+        menu.add(tmp);
+
+        tmp = new MenuItem("Open Issue Tracker", this::openIssueTracker);
+        tmp.setTooltip("Opens the website to report an issue");
+
+        menu.add(tmp);
+
+        tmp = new MenuItem("Credits", this::openContributors);
+        tmp.setTooltip("Opens the website that shows all the contributors");
+
+        menu.add(tmp);
+
+        tmp = new MenuItem("Exit", this::exit);
+        tmp.setTooltip("Exit Courier");
+
+        menu.add(tmp);
 
         this.logger.info("Courier v" + Version.getVersion() + " starting...");
 
@@ -78,13 +113,13 @@ public class Courier {
             this.logger.info("New installation detected, going through initial setup!");
             JFileChooser selector = new JFileChooser(new File(".")); // Ask user for where their dota directory is
             selector.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            selector.setDialogTitle("Select Dota 2 Folder"); // Set the prompt for the directory picker
+            selector.setDialogTitle("Select Dota 2 Beta Folder"); // Set the prompt for the directory picker
 
             if (selector.showOpenDialog(Main.invisible) == JFileChooser.APPROVE_OPTION) {
                 File file = selector.getSelectedFile();
                 config.addProperty("directory", file.getAbsolutePath());
                 this.logger.info("User selected: " + file.getAbsolutePath());
-                this.logger.info("Checking to see if the user is being truthful...");
+                this.logger.info("Double checking selected directory...");
 
                 GSIState state = generateGSI(file);
 
@@ -102,14 +137,14 @@ public class Courier {
                     }
                 } else {
                     this.logger.info("The user is a liar... Shutting down!");
-                    shutdown(null);
+                    System.exit(0);
                 }
             } else {
                 this.logger.info("Action cancelled by user! Shutting down!");
-                shutdown(null);
+                System.exit(0);
             }
         } else {
-            this.logger.info("Found config file! Making sure everything is where it should be!");
+            this.logger.info("Found config file! Verifying config integrity!");
 
             JsonObject config = new JsonObject();
 
@@ -123,7 +158,7 @@ public class Courier {
 
             if (generateGSI(new File(config.get("directory").getAsString())) == GSIState.BROKEN) {
                 this.logger.info("Config file pointing to incorrect directory! Shutting down!");
-                shutdown(null);
+                System.exit(0);
             } else {
                 this.logger.info("Courier v" + Version.getVersion() + " started!");
             }
@@ -144,6 +179,14 @@ public class Courier {
         return this.logger;
     }
 
+    public synchronized void setUpdate(boolean update) {
+        this.update = update;
+    }
+
+    public synchronized boolean canUpdate() { // Make sure to avoid data racing with this xd
+        return this.update;
+    }
+
     private GSIState generateGSI(File file) {
         GSIState state = GSIState.BROKEN;
 
@@ -156,7 +199,7 @@ public class Courier {
                 file = new File(file, "cfg");
 
                 if (file.mkdirs()) {
-                    this.logger.info("There appears to be no CFG directory, creating it...");
+                    this.logger.info("Creating CFG directory!");
                 }
 
                 file = new File(file, "gamestate_integration"); // Begin making our important files
@@ -203,10 +246,7 @@ public class Courier {
         return state;
     }
 
-    /*
-     * Event is just there to allow lambda-ing, I don't actually use it (does anyone?)
-     */
-    private void shutdown(ActionEvent event) {
+    private void shutdown() {
         this.logger.info("Courier v" + Version.getVersion() + " shutting down!");
 
         if (this.integration != null) {
@@ -217,8 +257,10 @@ public class Courier {
             handler.close();
         }
 
-        DiscordRPC.DiscordShutdown();
+        DiscordRPC.discordShutdown();
+    }
 
+    private void exit(ActionEvent event) {
         System.exit(0);
     }
 
@@ -227,7 +269,6 @@ public class Courier {
      */
     private void openLogs(ActionEvent event) {
         try {
-            this.logger.info("User wants to see logs folder, tidy up lads, we're having people over!");
             Desktop.getDesktop().open(logDir);
         } catch (IOException e) {
             e.printStackTrace();
@@ -239,8 +280,15 @@ public class Courier {
      */
     private void openIssueTracker(ActionEvent event) {
         try {
-            this.logger.info("Oh no, seems like the user wants to report a bug, I hope it wasn't major...");
             Desktop.getDesktop().browse(new URI("https://github.com/Dragovorn/courier/issues"));
+        } catch (URISyntaxException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void openContributors(ActionEvent event) {
+        try {
+            Desktop.getDesktop().browse(new URI("https://github.com/Dragovorn/courier/graphs/contributors"));
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }

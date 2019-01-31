@@ -21,6 +21,8 @@ public class GameStateIntegration implements HttpHandler {
 
     private Locale locale;
 
+    private boolean running;
+
     public GameStateIntegration(int port) {
         this.locale = new Locale("/lang/en-US.lang", "en-US"); // Make sure to load our locale
 
@@ -31,6 +33,8 @@ public class GameStateIntegration implements HttpHandler {
             this.server.start();
 
             Courier.getInstance().getLogger().info("Initiated GSI http server!");
+
+            DiscordRPC.discordRunCallbacks(); // Manually run the first callback just to make sure everything connected properly
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -43,19 +47,24 @@ public class GameStateIntegration implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         exchange.sendResponseHeaders(200, 0);
+        DiscordRPC.discordRunCallbacks();
+
+        if (!Courier.getInstance().canUpdate()) {
+            return; // Make sure DiscordRPC is properly connected
+        }
 
         if (exchange.getRequestMethod().equalsIgnoreCase("post")) { // Make sure we are getting post requests
             String encoding = "ISO-8859-1";
             String qry;
-            InputStream in = exchange.getRequestBody();
-            try (ByteArrayOutputStream out = new ByteArrayOutputStream()) { // Decode post data
-                byte buf[] = new byte[4096];
+
+            try (InputStream in = exchange.getRequestBody(); ByteArrayOutputStream out = new ByteArrayOutputStream()) { // Decode post data
+                byte[] buf = new byte[4096];
+
                 for (int n = in.read(buf); n > 0; n = in.read(buf)) {
                     out.write(buf, 0, n);
                 }
+
                 qry = new String(out.toByteArray(), encoding); // Encode post data to a string
-            } finally {
-                in.close();
             }
 
             JsonObject object = new Gson().fromJson(qry, JsonObject.class);
@@ -77,16 +86,15 @@ public class GameStateIntegration implements HttpHandler {
                 presence.state = "Level " + object.get("hero").getAsJsonObject().get("level").getAsInt() + " " + this.locale.translate(unlocalized_hero);
                 presence.largeImageKey = unlocalized_hero;
                 presence.largeImageText =  (object.get("hero").getAsJsonObject().get("buyback_cooldown").getAsInt() == 0 ? "BUYBACK OFF CD (" + object.get("hero").getAsJsonObject().get("buyback_cost").getAsInt() + " G)" : "BUYBACK ON CD (" + object.get("hero").getAsJsonObject().get("buyback_cooldown").getAsInt() + " S)");
-                presence.smallImageKey = "unranked";
-                presence.smallImageText = "Coming Soon...";
-            } else {
-                presence.details = "Main Menu";
-                presence.largeImageKey = "main_menu";
-                presence.smallImageKey = "unranked";
-                presence.smallImageText = "Coming Soon...";
-            }
 
-            DiscordRPC.DiscordUpdatePresence(presence);
+                DiscordRPC.discordUpdatePresence(presence);
+
+                if (!this.running) {
+                    this.running = true;
+                }
+            } else if (this.running) {
+                DiscordRPC.discordClearPresence();
+            }
         }
 
         exchange.close();
