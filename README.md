@@ -11,6 +11,13 @@ project and shouldn't be used in a production environment without further testin
 really want to use it right now and you know how to use git and maven, feel free to clone the repo and build
 it.
 
+Warning about unsistanability
+-----------------------------
+As Valve keeps adding heroes to the game Courier is rapidly approaching it's DiscordRPC asset limit (116/150 currently)
+while the title of this section sounds scary it's literally just here to warn people that if Discord doesn't raise the
+limit on assets at some point we'll have to remove the feature of showing the hero icon in the RPC. (This reads like a
+y2k warning but thats kinda the point)
+
 DISCLAIMERS
 -----------
 This shouldn't get you VAC'd because it uses Dota 2 Game State Integration, but if you do get VAC'd I am
