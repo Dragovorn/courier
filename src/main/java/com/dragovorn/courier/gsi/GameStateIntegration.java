@@ -81,16 +81,20 @@ public class GameStateIntegration implements HttpHandler {
             if (object.has("map")) {
                 JsonObject hero = object.get("hero").getAsJsonObject();
                 JsonObject map = object.get("map").getAsJsonObject();
+                JsonObject player = object.get("player").getAsJsonObject();
 
                 String unlocalized_hero = hero.get("name").getAsString();
 
                 String status;
+                String bonus = " ";
+
+                boolean radiant = player.get("team_name").getAsString().equals("radiant");
+
+                int gameTime = map.get("clock_time").getAsInt();
 
                 if (!this.running) {
                     this.running = true;
                 }
-
-                int gameTime = map.get("clock_time").getAsInt();
 
                 if (this.previousTime < gameTime && gameTime < 0) {
                     this.gameStart = -1;
@@ -102,16 +106,12 @@ public class GameStateIntegration implements HttpHandler {
                     this.gameStart = Instant.now().getEpochSecond() - gameTime;
                 }
 
-                String bonus = " ";
-
                 if (map.get("paused").getAsBoolean()) {
                     bonus += "(Paused)";
                     this.gameStart = -1;
                 } else {
                     if (map.get("game_state").getAsString().equals("DOTA_GAMERULES_STATE_PRE_GAME")) {
                         bonus += "(Preparing)";
-                    } else if (!hero.get("alive").getAsBoolean()) {
-                        bonus += hero.get("buyback_cooldown").getAsInt() == 0 ? "(Buyback " + hero.get("buyback_cost") + "g)" : "(No Buyback)";
                     }
 
                     if (this.gameStart > Instant.now().getEpochSecond()) {
@@ -121,11 +121,14 @@ public class GameStateIntegration implements HttpHandler {
                     }
                 }
 
-                status = (hero.getAsJsonObject().get("alive").getAsBoolean() ? "Alive" : "Dead") + bonus;
+                status = (hero.getAsJsonObject().get("alive").getAsBoolean() ? "Alive" : "Dead") + " (" + player.get("kills").getAsInt() + "/" + player.get("deaths").getAsInt() + "/" + player.get("assists").getAsInt() + ")";
 
-                presence.details = "Level " + hero.get("level").getAsInt() + " " + this.locale.translate(unlocalized_hero);
+                presence.details = "Level " + hero.get("level").getAsInt() + bonus;
                 presence.state = status;
                 presence.largeImageKey = unlocalized_hero;
+                presence.largeImageText = this.locale.translate(unlocalized_hero);
+                presence.smallImageKey = String.valueOf(radiant);
+                presence.smallImageText = this.locale.translate(String.valueOf(radiant));
 
                 DiscordRPC.discordUpdatePresence(presence);
 

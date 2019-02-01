@@ -474,3 +474,14 @@ for free and each of these files is 500KB, there are over 115 of these things)
     - [ ] Downloaded
     - [ ] Resized
     - [ ] Uploaded
+
+Teams
+-----
+- [x] Radiant
+   - [x] Downloaded
+   - [x] Resized
+   - [x] Uploaded
+- [x] Dire
+   - [x] Downloaded
+   - [x] Resized
+   - [x] Uploaded

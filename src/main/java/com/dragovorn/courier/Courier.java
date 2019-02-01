@@ -249,6 +249,7 @@ public class Courier {
                         writer.println("    \"data\"");
                         writer.println("    {");
                         writer.println("        \"provider\"      \"1\"");
+                        writer.println("        \"player\"        \"1\"");
                         writer.println("        \"map\"           \"1\"");
                         writer.println("        \"hero\"          \"1\"");
                         writer.println("        \"abilities\"     \"1\"");
