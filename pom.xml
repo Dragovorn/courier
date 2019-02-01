@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.dragovorn</groupId>
     <artifactId>courier</artifactId>
-    <version>0.9.0</version>
+    <version>0.9.1</version>
     <build>
         <finalName>Courier</finalName>
         <plugins>
@@ -54,12 +54,6 @@
             <groupId>com.github.Vatuu</groupId>
             <artifactId>discord-rpc</artifactId>
             <version>1.6.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>net.java.dev.jna</groupId>
-                    <artifactId>jna</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -74,12 +68,13 @@
         <dependency>
             <groupId>com.dorkbox</groupId>
             <artifactId>SystemTray</artifactId>
-            <version>3.15</version>
-        </dependency>
-        <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna</artifactId>
-            <version>5.2.0</version>
+            <version>3.17</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>net.java.dev.jna</groupId>
+                    <artifactId>jna</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
