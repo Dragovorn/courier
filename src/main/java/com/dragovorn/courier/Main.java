@@ -10,15 +10,18 @@ import java.io.IOException;
 
 public class Main {
 
-    static JFrame invisible;
+    static JFrame parent;
 
     public static void main(String... args) {
-        invisible = new JFrame();
+        parent = new JFrame("Courier");
+        parent.setUndecorated(true);
+        parent.setSize(1, 1);
         try {
-            invisible.setIconImage(ImageIO.read(FileUtil.getResource("icon.png")));
+            parent.setIconImage(ImageIO.read(FileUtil.getResource("icon.png")));
         } catch (IOException e) {
             e.printStackTrace();
         }
+        parent.setVisible(true);
 
         JWindow window = new JWindow();
         window.setBounds(500, 150, 300, 200);

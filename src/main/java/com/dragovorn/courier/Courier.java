@@ -130,7 +130,7 @@ public class Courier {
             selector.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             selector.setDialogTitle("Select Dota 2 Beta Folder"); // Set the prompt for the directory picker
 
-            if (selector.showOpenDialog(Main.invisible) == JFileChooser.APPROVE_OPTION) {
+            if (selector.showOpenDialog(Main.parent) == JFileChooser.APPROVE_OPTION) {
                 File file = selector.getSelectedFile();
                 config.addProperty("directory", file.getAbsolutePath());
                 this.logger.info("User selected: " + file.getAbsolutePath());
