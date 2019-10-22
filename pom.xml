@@ -53,7 +53,7 @@
         <dependency>
             <groupId>com.github.Vatuu</groupId>
             <artifactId>discord-rpc</artifactId>
-            <version>custom-build</version> <!-- I made a custom build of discord-rpc.jar because the current version on jitpack is borked -->
+            <version>1.6.2</version>
             <exclusions>
                 <exclusion>
                     <groupId>net.java.dev.jna</groupId>
